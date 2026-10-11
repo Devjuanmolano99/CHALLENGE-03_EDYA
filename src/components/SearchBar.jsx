@@ -1,20 +1,19 @@
 function SearchBar({ query, onQueryChange, topK, onTopKChange }) {
-  const quickChips = ["air", "adi", "nike", "vans", ""];
+  const suggestions = ["air", "adidas", "nike", "vans", ""];
 
   return (
     <div className="card-panel search-card">
-      <h3>🔍 Buscador Inteligente (Prefix Search + Heap)</h3>
+      <h3>Buscar productos</h3>
       <p className="card-desc">
-        Escribe un prefijo para buscar en el <strong>Trie</strong>. El{" "}
-        <strong>MaxHeap</strong> ordenará y retornará los <strong>Top K</strong> más populares.
+        Escribe las primeras letras del nombre para filtrar los productos disponibles.
       </p>
 
       <div className="search-controls">
         <div className="search-input-wrapper">
-          <span className="search-icon">🔎</span>
+          <span className="search-icon">🔍</span>
           <input
             type="text"
-            placeholder="Buscar por prefijo (ej: 'air', 'adi')..."
+            placeholder="Escribe para buscar (ej: air, adidas)..."
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
             className="search-input"
@@ -24,6 +23,7 @@ function SearchBar({ query, onQueryChange, topK, onTopKChange }) {
               type="button"
               onClick={() => onQueryChange("")}
               className="clear-btn"
+              title="Borrar texto"
             >
               ×
             </button>
@@ -31,7 +31,7 @@ function SearchBar({ query, onQueryChange, topK, onTopKChange }) {
         </div>
 
         <div className="topk-wrapper">
-          <label htmlFor="topk-select">Top K:</label>
+          <label htmlFor="topk-select">Mostrar:</label>
           <select
             id="topk-select"
             value={topK}
@@ -47,15 +47,15 @@ function SearchBar({ query, onQueryChange, topK, onTopKChange }) {
       </div>
 
       <div className="quick-chips">
-        <span className="chips-label">Prueba rápida:</span>
-        {quickChips.map((chip) => (
+        <span className="chips-label">Sugerencias:</span>
+        {suggestions.map((item) => (
           <button
-            key={chip || "todos"}
+            key={item || "todos"}
             type="button"
-            onClick={() => onQueryChange(chip)}
-            className={`chip-btn ${query === chip ? "active" : ""}`}
+            onClick={() => onQueryChange(item)}
+            className={`chip-btn ${query === item ? "active" : ""}`}
           >
-            {chip ? `"${chip}"` : "Ver todos"}
+            {item ? item : "Todos"}
           </button>
         ))}
       </div>

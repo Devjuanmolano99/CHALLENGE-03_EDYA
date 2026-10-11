@@ -17,7 +17,7 @@ function AddProductForm({ onAddProduct }) {
     if (isNaN(pop) || pop < 0 || pop > 100) {
       setFeedback({
         type: "error",
-        message: "La popularidad debe estar entre 0 y 100.",
+        message: "El puntaje debe estar entre 0 y 100.",
       });
       return;
     }
@@ -25,7 +25,7 @@ function AddProductForm({ onAddProduct }) {
     onAddProduct(name.trim(), pop);
     setFeedback({
       type: "success",
-      message: `¡"${name.trim()}" insertado en el Trie con popularidad ${pop}!`,
+      message: `¡"${name.trim()}" agregado correctamente!`,
     });
 
     setName("");
@@ -36,14 +36,14 @@ function AddProductForm({ onAddProduct }) {
 
   return (
     <div className="card-panel">
-      <h3>➕ Insertar Producto en el Trie</h3>
+      <h3>Agregar producto</h3>
       <p className="card-desc">
-        Guarda un nuevo producto en la estructura (método <code>insert(name, popularity)</code>).
+        Ingresa un nuevo producto y asígnale su nivel de popularidad.
       </p>
 
       <form onSubmit={handleSubmit} className="form-layout">
         <div className="form-group">
-          <label htmlFor="prod-name">Nombre del Producto:</label>
+          <label htmlFor="prod-name">Nombre:</label>
           <input
             id="prod-name"
             type="text"
@@ -56,7 +56,7 @@ function AddProductForm({ onAddProduct }) {
 
         <div className="form-group">
           <div className="pop-label-row">
-            <label htmlFor="prod-pop">Popularidad (0 - 100):</label>
+            <label htmlFor="prod-pop">Popularidad:</label>
             <span className="pop-val-badge">{popularity} pts</span>
           </div>
           <input
@@ -71,7 +71,7 @@ function AddProductForm({ onAddProduct }) {
         </div>
 
         <button type="submit" className="submit-btn">
-          📥 Insertar en Trie
+          Guardar producto
         </button>
 
         {feedback && (

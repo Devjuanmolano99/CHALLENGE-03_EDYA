@@ -3,25 +3,22 @@ function TopResultsList({ results, query, topK }) {
     <div className="card-panel results-card">
       <div className="results-header">
         <div>
-          <h3>🏆 Resultados Top {topK} más populares</h3>
+          <h3>Resultados más populares ({results.length})</h3>
           <p className="card-desc">
             {query ? (
-              <span>
-                Prefijo consultado: <code>"{query}"</code> ({results.length} encontrados)
-              </span>
+              <span>Mostrando los mejores resultados para <strong>"{query}"</strong>:</span>
             ) : (
-              <span>Todos los productos ordenados por popularidad en el MaxHeap</span>
+              <span>Mostrando el ranking general de productos:</span>
             )}
           </p>
         </div>
-        <span className="algo-badge">Trie DFS + MaxHeap Pop</span>
       </div>
 
       {results.length === 0 ? (
         <div className="empty-results">
-          <span className="empty-icon">🚫</span>
-          <h4>Sin coincidencias en el Trie</h4>
-          <p>No se encontraron productos que comiencen con "{query}".</p>
+          <span className="empty-icon">👟</span>
+          <h4>No se encontraron productos</h4>
+          <p>No hay coincidencias con "{query}". Intenta con otro término.</p>
         </div>
       ) : (
         <div className="results-grid">
@@ -42,8 +39,8 @@ function TopResultsList({ results, query, topK }) {
               </div>
 
               <div className="product-score">
-                <span className="score-val">⭐ {product.popularity}</span>
-                <span className="score-label">Popularidad</span>
+                <span className="score-val">★ {product.popularity}</span>
+                <span className="score-label">Puntos</span>
               </div>
             </div>
           ))}

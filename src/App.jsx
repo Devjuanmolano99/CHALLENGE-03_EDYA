@@ -10,25 +10,25 @@ function App() {
   // Inicializamos el motor Trie + Heap una sola vez
   const engine = useMemo(() => buildSearchEngine(), []);
 
-  // Forzar actualización cuando se inserten nuevos productos
+  // Para refrescar la vista cuando se agreguen productos
   const [version, setVersion] = useState(0);
 
-  // Por defecto iniciamos con "air" y K=2 para que muestre exactamente el ejemplo de la diapositiva
+  // Por defecto iniciamos con "air" y Top 2
   const [query, setQuery] = useState("air");
   const [topK, setTopK] = useState(2);
 
-  // Ejecutamos la búsqueda inteligente: Trie (prefijo) + MaxHeap (Top K)
+  // Consulta por prefijo en el Trie y extracción Top K con el Heap
   const results = useMemo(() => {
     return engine.searchTopK(query, topK);
   }, [engine, query, topK, version]);
 
-  // Manejador para insertar producto
+  // Agregar nuevo producto
   const handleAddProduct = (name, popularity) => {
     engine.insert(name, popularity);
     setVersion((v) => v + 1);
   };
 
-  // Manejador para ejecutar el caso de prueba de la diapositiva
+  // Acción del botón rápido
   const handleRunExample = (prefix, k) => {
     setQuery(prefix);
     setTopK(k);
@@ -37,16 +37,14 @@ function App() {
   return (
     <div className="app-container">
       <header className="main-header">
-        <div className="header-badge">Estructuras de Datos II · UAO</div>
-        <h1>⚡ Challenge 11 — Smart Search Engine + Top Results</h1>
+        <h1>Catálogo de Productos</h1>
         <p className="subtitle">
-          Búsqueda por prefijo mediante <strong>Trie</strong> y extracción de los{" "}
-          <strong>Top K</strong> más populares usando <strong>MaxHeap</strong>.
+          Búsqueda rápida por nombre y ordenamiento por popularidad.
         </p>
       </header>
 
       <div className="content-grid">
-        {/* Columna Principal: Búsqueda y Resultados Top K */}
+        {/* Columna Principal: Buscador y Lista de Productos */}
         <main className="main-column">
           <SearchBar
             query={query}
@@ -62,7 +60,7 @@ function App() {
           />
         </main>
 
-        {/* Columna Lateral: Agregar productos y caso de prueba oficial */}
+        {/* Columna Lateral: Agregar producto y búsqueda rápida */}
         <aside className="sidebar-column">
           <SlideExampleRunner onRunExample={handleRunExample} />
 
@@ -72,7 +70,7 @@ function App() {
 
       <footer className="footer-bar">
         <p>
-          <strong>Challenge 11 (EDYA)</strong>: Los productos se almacenan en un árbol de caracteres <code>Trie</code> (búsqueda O(L)) y los K más populares se extraen con un montículo <code>MaxHeap</code> (extracción O(K log N)).
+          Desarrollado con estructuras de datos Trie y MaxHeap en React.
         </p>
       </footer>
     </div>

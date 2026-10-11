@@ -1,54 +1,35 @@
-# Challenge 11 — Smart Search Engine (Tries & Heaps)
+# Challenge 11 — Buscador de Productos (Tries & Heaps)
 
-Proyecto en React que resuelve el **Challenge 11** de la materia **Estructuras de Datos II** (Tries y Montículos / Heaps).
-
----
-
-## 📌 Enunciado
-> *"Create a Smart search engine + Top results*  
-> *- Save products in a Trie*  
-> *- Allow searching by prefix*  
-> *- Use a Heap to return the Top K most popular*  
-> *- Each product has: `{ name: "air max", popularity: 95 }`*  
->  
-> *Example:*  
-> `insert("air max", 90)`  
-> `insert("air force", 95)`  
-> `insert("air jordan", 85)`  
-> `insert("adidas boost", 80)`  
->  
-> `searchTopK("air", 2):`  
-> `[`  
-> `  { name: "air force", popularity: 95 },`  
-> `  { name: "air max", popularity: 90 }`  
-> `]`"
+Proyecto en React para la clase de **Estructuras de Datos II**.
 
 ---
 
-## 🛠️ Estructuras implementadas
+## 📌 Descripción
 
-1. **Trie (`src/models/Trie.js`)**:
-   - Árbol de caracteres con nodos encadenados.
-   - `insert(name, popularity)`: Almacena productos carácter por carácter con `isEndOfWord`.
-   - `searchByPrefix(prefix)`: Encuentra eficientemente todos los productos que inician con un prefijo mediante recorrido DFS.
-
-2. **MaxHeap (`src/models/MaxHeap.js`)**:
-   - Implementación de montículo binario completo sobre un arreglo (ordenado por popularidad).
-   - Métodos: `push`, `pop`, `peek`, `heapify`, `percolateUp`, `percolateDown`, `size`, `isEmpty`.
-
-3. **Smart Search Engine (`src/models/SearchEngine.js`)**:
-   - `searchTopK(prefix, k)`:
-     1. Filtra los productos con el **Trie** según el prefijo ingresado.
-     2. Construye el **MaxHeap** con los productos coincidentes (`heapify`).
-     3. Extrae los **K** elementos más populares ejecutando `pop()` en el montículo.
+El proyecto implementa un buscador de productos combinando dos estructuras de datos:
+1. **Trie (Árbol de Prefijos)**: Permite almacenar palabras y buscar todas las coincidencias que comiencen con las letras ingresadas por el usuario.
+2. **MaxHeap (Montículo Máximo)**: Organiza las coincidencias por nivel de popularidad y extrae rápidamente los **Top K** productos más destacados.
 
 ---
 
-## 🚀 Ejecución
+## 🛠️ Estructura del Código
+
+- `src/models/Trie.js`: Implementación de Trie con inserción y búsqueda por prefijo (`searchByPrefix`).
+- `src/models/MaxHeap.js`: Montículo binario sobre arreglo con operaciones `push`, `pop`, `heapify`, `percolateUp` y `percolateDown`.
+- `src/models/SearchEngine.js`: Integra Trie y MaxHeap para la función `searchTopK(prefix, k)`.
+- `src/components/`:
+  - `SearchBar.jsx`: Barra de búsqueda y selector de cantidad de resultados.
+  - `TopResultsList.jsx`: Listado de los productos ordenados por popularidad.
+  - `AddProductForm.jsx`: Formulario para registrar nuevos productos.
+  - `SlideExampleRunner.jsx`: Botón de búsqueda rápida.
+
+---
+
+## 🚀 Cómo ejecutar
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abre `http://localhost:5173/` en tu navegador para interactuar con el buscador en tiempo real.
+Abre `http://localhost:5173/` en tu navegador.
