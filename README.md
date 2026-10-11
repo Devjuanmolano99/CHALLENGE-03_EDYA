@@ -1,36 +1,56 @@
-# Challenge 03 — Listas Enlazadas
+# Challenge 09 — Árboles N-Arios (N-ary Trees)
 
-Proyecto en React que resuelve el Challenge 03 de la Clase 03 (Estructuras de Datos II):
+Proyecto en React que resuelve el **Challenge 09** de la clase de **Estructuras de Datos II** (Árboles N-Arios).
 
-1. **Lista Enlazada Simple (`LinkedList`)** → reproductor de canciones que avanza en orden.
-2. **Lista Doblemente Enlazada (`DoublyLinkedList`)** → historial de navegación tipo navegador, para ir "atrás" y "adelante" entre páginas visitadas.
-3. Proyecto en **React** con **2 páginas** (`/songs` y `/browser`), cada una usando su respectiva lista y navegando mediante **botones**.
+---
 
-## Estructura
+## 📌 Enunciado
+> *"Create a new project in React*  
+> *Fill a N-ary tree with some menus and submenus – Every Menu item will have title, a link and a component.*  
+> *Create a sidebar menu in screen by printing the previous tree created."*
 
-```
-src/
-  models/
-    LinkedList.js         # Lista enlazada simple (Node, append, peek, size, remove, print)
-    DoublyLinkedList.js   # Lista doblemente enlazada (Node con prev/next, append, remove)
-  data/
-    songs.js              # Datos simulados de canciones
-    visitedPages.js        # Datos falsos de páginas visitadas
-  pages/
-    HomePage.jsx           # Menú principal
-    SongsPage.jsx          # Reproductor de canciones (usa LinkedList)
-    BrowserPage.jsx        # Historial del navegador (usa DoublyLinkedList)
-  App.jsx                  # Rutas de la aplicación
-  main.jsx                 # Punto de entrada
-```
+---
 
-## Cómo ejecutar el proyecto
+## 🌳 Implementación del Árbol N-Ario
+
+1. **Modelo `TreeNode.js`**:
+   - Cada nodo almacena:
+     - `title`: Nombre visible en el menú.
+     - `link`: Ruta asociada (ej. `/settings/security`).
+     - `component`: Componente de React a renderizar al seleccionar el nodo.
+     - `children`: Arreglo de nodos hijos (submenús).
+   - Métodos:
+     - `addChild(node)`: Conecta un hijo al nodo actual.
+     - `isLeaf()`: Comprueba si el nodo es hoja.
+
+2. **Estructura construida (`menuTree.js`)**:
+   Basada exactamente en el diseño de la diapositiva 24:
+   - `Profile`
+   - `Messages`
+   - `Settings` (Rama con submenús):
+     - `Account`
+     - `Profile`
+     - `Security & Privacy` (seleccionado por defecto)
+     - `Password`
+     - `Notification`
+   - `Help` (Rama con submenús):
+     - `FAQ's`
+     - `Submit a Ticket`
+     - `Network Status`
+   - `Logout`
+
+3. **Renderizado en pantalla (`Sidebar.jsx` & `SidebarItem.jsx`)**:
+   - Recorre recursivamente la jerarquía del árbol N-ario para renderizar los niveles y submenús.
+   - Permite expandir y contraer las ramas con hijos.
+   - Al dar clic en un nodo con componente, este se renderiza en la vista principal.
+
+---
+
+## 🚀 Ejecución del proyecto
 
 ```bash
 npm install
 npm run dev
 ```
 
-Luego abre la URL que indique Vite (por defecto `http://localhost:5173`).
-
-
+Abre `http://localhost:5173/` en el navegador.
