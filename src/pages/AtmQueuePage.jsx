@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
 import Queue from "../models/Queue";
 import mockAtmPeople from "../data/atmPeople";
 import AtmHeader from "../components/atm/AtmHeader";
@@ -61,15 +60,6 @@ function AtmQueuePage() {
 
   return (
     <div className="page atm-page">
-      <div className="navigation-bar">
-        <Link to="/" className="back-link">
-          ← Volver al inicio
-        </Link>
-        <Link to="/books" className="alt-nav-link">
-          Ir a Pila de Libros (Stack) →
-        </Link>
-      </div>
-
       <AtmHeader
         queueSize={queueSize}
         totalWithdrawal={totalWithdrawal}
