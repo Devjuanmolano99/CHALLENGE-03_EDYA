@@ -170,3 +170,235 @@ button.primary:hover {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* =========================================================
+   Estilos específicos para Árbol Binario de Búsqueda (BST)
+   ========================================================= */
+
+.bst-page {
+  max-width: 950px;
+}
+
+.bst-header {
+  margin-bottom: 24px;
+}
+
+.bst-controls-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.insert-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.insert-form input {
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  width: 180px;
+}
+
+.insert-form input:focus {
+  border-color: #6366f1;
+}
+
+.primary-btn {
+  background: #6366f1;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.primary-btn:hover {
+  background: #4f46e5;
+}
+
+.btn-actions-group {
+  display: flex;
+  gap: 10px;
+}
+
+.secondary-btn {
+  background: #334155;
+  color: #f1f5f9;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.secondary-btn:hover {
+  background: #475569;
+}
+
+.danger-btn {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.danger-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+}
+
+.canvas-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.legend-indicator {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.tree-canvas-container {
+  width: 100%;
+  overflow-x: auto;
+  background: #0f172a;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.tree-svg {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  min-height: 380px;
+}
+
+.empty-tree-state {
+  padding: 60px 20px;
+  text-align: center;
+  color: #64748b;
+  background: #0f172a;
+  border-radius: 10px;
+}
+
+.traversals-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.traversal-buttons {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0 24px;
+  flex-wrap: wrap;
+}
+
+.traversal-btn {
+  background: #0f172a;
+  border: 1px solid #475569;
+  color: #e2e8f0;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.traversal-btn:hover,
+.traversal-btn.active {
+  background: #6366f1;
+  border-color: #818cf8;
+  color: #ffffff;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.result-box {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.result-box h4 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  color: #cbd5e1;
+}
+
+.tokens-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.token {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.token-pre {
+  background: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.token-in {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.token-post {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
