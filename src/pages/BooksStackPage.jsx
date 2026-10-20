@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
 import Stack from "../models/Stack";
 import mockBooks from "../data/mockBooks";
 import BookForm from "../components/books/BookForm";
@@ -41,15 +40,6 @@ function BooksStackPage() {
 
   return (
     <div className="page books-page">
-      <div className="navigation-bar">
-        <Link to="/" className="back-link">
-          ← Volver al inicio
-        </Link>
-        <Link to="/atm" className="alt-nav-link">
-          Ir a Cajero ATM (Queue) →
-        </Link>
-      </div>
-
       <div className="section-header">
         <h1>📚 Pila de Libros (Stack)</h1>
         <p className="subtitle">
